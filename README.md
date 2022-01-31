@@ -1,6 +1,6 @@
 # Justram Web
 
-### react, apollo graphql, styled-components, cypress, jest
+### react, apollo graphql, styled-components, cypress, jest, react-router v6
 
 ### Login follow test
 
