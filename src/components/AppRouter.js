@@ -15,7 +15,7 @@ function AppRouter({ isLoggedIn }) {
           <Route path="/" element={<Feed />} />
         ) : (
           <Fragment>
-            <Route path="/" element={<SignIn submit={() => {}} />} />
+            <Route path="/" element={<SignIn jestSubmit={() => {}} />} />
             <Route path={routes.signUp} element={<SignUp />} />
           </Fragment>
         )}

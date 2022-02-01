@@ -5,6 +5,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppMeta from 'components/AppMeta';
 import useInput from 'hooks/useInput';
+import { useMemo } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
@@ -21,13 +22,16 @@ const FormBox = styled.div`
   }
 `;
 
-function SignIn({ submit }) {
+function SignIn({ jestSubmit }) {
   const username = useInput('');
   const password = useInput('');
+  const isValid = useMemo(() => {
+    return !!username.value && !!password.value ? true : false;
+  }, [username.value, password.value]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submit({
+    jestSubmit({
       username: username.value,
       password: password.value,
     });
@@ -44,15 +48,19 @@ function SignIn({ submit }) {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
+              name="username"
               placeholder="username"
               onChange={username.onChange}
             />
             <input
               type="text"
+              name="password"
               placeholder="password"
               onChange={password.onChange}
             />
-            <button type="submit">Login</button>
+            <button type="submit" disabled={!isValid}>
+              Login
+            </button>
           </form>
         </FormBox>
       </Container>

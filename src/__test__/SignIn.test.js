@@ -16,9 +16,9 @@ describe('SignIn', () => {
     expect(submitButton).toBeInTheDocument();
   });
 
-  it('should allow the user to submit', () => {
-    const submit = jest.fn();
-    render(<SignIn submit={submit} />);
+  it('on initial render, submit button is disabled, if a username and password is entered submit button is enabled, and allow the user to submit', () => {
+    const jestSubmit = jest.fn();
+    render(<SignIn jestSubmit={jestSubmit} />);
 
     const usernameField = screen.getByPlaceholderText(/username/i);
     const passwordField = screen.getByPlaceholderText(/password/i);
@@ -26,11 +26,16 @@ describe('SignIn', () => {
       type: 'submit',
     });
 
+    // disabled
+    expect(submitButton).toBeDisabled();
+    // enter a username, password
     userEvent.type(usernameField, 'hyejun');
     userEvent.type(passwordField, 'secret123');
+    // enabled
+    expect(submitButton).toBeEnabled();
+    // allow to submit
     userEvent.click(submitButton);
-
-    expect(submit).toHaveBeenCalledWith({
+    expect(jestSubmit).toHaveBeenCalledWith({
       username: 'hyejun',
       password: 'secret123',
     });
