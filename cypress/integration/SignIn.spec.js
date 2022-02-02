@@ -4,6 +4,10 @@ describe('sign-in', () => {
 
   it('user can login', () => {
     cy.visit('/');
+
+    // render correctly
+    cy.get('h1').contains(/login/i).should('exist');
+
     // cy.findByPlaceholderText('username');
     // cy.findByPlaceholderText('password');
     // cy.findByRole('button', { name: /login/i });
@@ -11,7 +15,11 @@ describe('sign-in', () => {
     cy.get('input[name="password"]').type('1234');
     cy.get('button').contains(/login/i).click();
 
-    // cy.url().should('include', 'me');
+    // render correctly
+    cy.url().should('include', 'me');
+    cy.get('h1')
+      .contains(/profile/i)
+      .should('exist');
     // fetch user data
     cy.findByText('hyejun').should('exist');
   });

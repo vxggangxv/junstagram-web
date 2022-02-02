@@ -118,6 +118,7 @@ function SignIn({ jestSubmit = () => {} }) {
   return (
     <Container>
       <AppMeta title="junstagram | login" />
+      <h1 className="sr-only">Login</h1>
       <div>
         <figure>
           <FontAwesomeIcon icon={faInstagram} size="5x" />
