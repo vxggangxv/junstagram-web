@@ -14,21 +14,37 @@ export const darkTheme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
-    ${reset}
-    input {
-      all:unset;
-    }
-    * {
-      box-sizing:border-box;
-    }
-    body {
-        background-color:${(props) => props.theme.bgColor};
-        font-size:14px;
-        font-family:'Open Sans', sans-serif;
-        color:${(props) => props.theme.fontColor};
-    }
-    a {
-      text-decoration: none;
-      color:inherit;
-    }
+  ${reset}
+  input {
+    all: unset;
+  }
+  button:not([disabled]) {
+    cursor: pointer;
+  }
+  * {
+    box-sizing: border-box !important;
+  }
+  body {
+      background-color: ${(props) => props.theme.bgColor};
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      color: ${(props) => props.theme.fontColor};
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
 `;

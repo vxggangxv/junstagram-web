@@ -1,25 +1,34 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import routes from 'routes';
 import PropTypes from 'prop-types';
-import Feed from 'pages/Feed';
 import SignIn from 'pages/SignIn';
-import SignUp from 'pages/SignUp';
-import NotFound from 'pages/NotFound';
 import { Fragment } from 'react';
+import routes from 'routes';
 
+// use X
 function AppRouter({ isLoggedIn }) {
   return (
     <Router>
       <Routes>
         {isLoggedIn ? (
-          <Route path="/" element={<Feed />} />
+          <Fragment>
+            {/* <Route path={routes.index.path} element={<Navigate replace to={routes.profile.path} />} /> */}
+            <Route path={routes.index.path} element={routes.feed.element} />
+            <Route
+              path={routes.profile.path}
+              element={routes.profile.element}
+            />
+          </Fragment>
         ) : (
           <Fragment>
-            <Route path="/" element={<SignIn jestSubmit={() => {}} />} />
-            <Route path={routes.signUp} element={<SignUp />} />
+            <Route
+              path={routes.index.path}
+              element={<SignIn jestSubmit={() => {}} />}
+            />
+            <Route path={routes.signIn.path} element={routes.signIn.element} />
+            {/* <Route path={routes.signUp.path} element={routes.signUp.element} /> */}
           </Fragment>
         )}
-        <Route path="*" element={<NotFound />}></Route>
+        <Route path="*" element={routes.notFound.element}></Route>
       </Routes>
     </Router>
   );

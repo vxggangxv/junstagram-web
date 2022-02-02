@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 import { client, darkModeVar, isLoggedInVar } from './apollo';
 import { darkTheme, GlobalStyles, lightTheme } from './styles';
-import AppRoutes from 'components/Routes';
+import AppRoutes from 'components/AppRoutes';
 
 function App() {
   const isLoggedIn = useReactiveVar(isLoggedInVar);

@@ -6,18 +6,23 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-const TOKEN = 'TOKEN';
-const DARK_MODE = 'DARK_MODE';
+export const TOKEN = 'TOKEN';
+export const USERNAME = 'USERNAME';
+export const DARK_MODE = 'DARK_MODE';
 
-export const isLoggedInVar = makeVar(Boolean(localStorage.getItem(TOKEN)));
+export const isLoggedInVar = makeVar(
+  Boolean(localStorage.getItem(TOKEN) && localStorage.getItem(USERNAME))
+);
 
-export const logUserIn = (token) => {
+export const logUserIn = (token, username) => {
   localStorage.setItem(TOKEN, token);
+  localStorage.setItem(USERNAME, username);
   isLoggedInVar(true);
 };
 
 export const logUserOut = () => {
-  localStorage.removeItem(TOKEN);
+  localStorage.removeItem(USERNAME);
+  localStorage.removeItem(USERNAME);
   window.location.reload();
 };
 

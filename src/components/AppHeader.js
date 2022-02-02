@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 function AppHeader(props) {
-  return <header>''</header>;
+  return <header>header</header>;
 }
 
 AppHeader.propTypes = {};
