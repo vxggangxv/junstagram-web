@@ -20,6 +20,7 @@ describe('sign-in', () => {
     cy.get('h1')
       .contains(/profile/i)
       .should('exist');
+
     // fetch user data
     cy.findByText('hyejun').should('exist');
   });
