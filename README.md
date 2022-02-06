@@ -1,11 +1,9 @@
 # Justram Web
 
-### react, apollo graphql, styled-components, cypress, jest, react-router v6
+### - react, react-router v6, apollo graphql, styled-components, cypress, @testing/library,
 
-### Login follow test
+### - Login follow test
 
 - jest, cypress
-
-- [ ] Router
-- [ ] Authentication
-- [ ] Styles
+- npm run test
+- npm run cypress:open
